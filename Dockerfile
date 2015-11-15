@@ -5,4 +5,6 @@ RUN cd /go/src/github.com/tools/godep && go-wrapper install
 RUN ln -s /go/bin/godep /usr/local/bin/godep
 WORKDIR /go/src/app
 ENV BINARY app
-CMD [ "/bin/bash" , "-c", "godep get -v && go build -v -o ${BINARY}"]
+ENV CG0_ENABLED 0
+ENV GOOS linux
+CMD [ "/bin/bash" , "-c", "godep get -v && go build -a -installsuffix cgo -o ${BINARY} "]

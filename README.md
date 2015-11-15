@@ -1,3 +1,5 @@
+[![Docker Repository on Quay](https://quay.io/repository/rutledgepaulv/godep-vendor-builder/status "Docker Repository on Quay")](https://quay.io/repository/rutledgepaulv/godep-vendor-builder)
+
 ### Godep Vendor Builder
 
 A variant on the publicly available golang image that lets you build go binaries for placement in a minimal

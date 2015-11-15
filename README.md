@@ -1,4 +1,5 @@
 [![Docker Repository on Quay](https://quay.io/repository/rutledgepaulv/godep-vendor-builder/status "Docker Repository on Quay")](https://quay.io/repository/rutledgepaulv/godep-vendor-builder)
+[![](https://badge.imagelayers.io/rutledgepaulv/godep-vendor-builder:latest.svg)](https://imagelayers.io/?images=rutledgepaulv/godep-vendor-builder:latest 'Get your own badge on imagelayers.io')
 
 ### Godep Vendor Builder
 
@@ -31,15 +32,15 @@ godep save
 
 That should produce a directory in your project called Godeps that contains a json file which details
 the specific commit of each dependency your project is currently using based on what's in your workspace.
-Now if you run ```godep get``` should also see a 'vendor' directory. These are the project-specific copy 
+Now if you run ```godep get``` should also see a 'vendor' directory. These are the project-specific copy
 of the dependencies that you can use without affecting other projects that use those dependencies from your
 workspace. This image will use 'godep get' to make sure it uses the commits you specified by freezing your
 dependencies.
 
 
-From within your app's source code directory: 
+Build your binary:
 ```bash
 
-docker run --rm -v "$PWD":/go/src/app rutledgepaulv/godep-vendor-builder go build -v -o <name-for-the-executable>
+docker run -v $PWD:/go/src/app -e BINARY=app rutledgepaulv/godep-vendor-builder
 
 ```

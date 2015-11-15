@@ -1,7 +1,8 @@
 FROM golang:1.5.1
 ENV GO15VENDOREXPERIMENT 1
 RUN go-wrapper download github.com/tools/godep
-ONBUILD COPY . /go/src/app
-ONBUILD RUN rm -rf /go/src/app/vendor
-ONBUILD RUN godep get -v
-ONBUILD RUN go -v install
+RUN cd /go/src/github.com/tools/godep && go-wrapper install
+RUN ln -s /go/bin/godep /usr/local/bin/godep
+WORKDIR /go/src/app
+ENV BINARY app
+CMD [ "/bin/bash" , "-c", "godep get -v && go build -v -o ${PROJECT}"]

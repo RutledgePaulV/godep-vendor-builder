@@ -21,7 +21,7 @@ go get godep
 sudo ln -s $GOPATH/bin/godep /usr/local/bin/godep
 export GO15VENDOREXPERIMENT=1
 
-cd $GOPATH/workspace/github.com/.../your_app
+cd $GOPATH/path/to/your/app
 godep save
 
 ```
@@ -34,8 +34,10 @@ of the dependencies that you can use without affecting other projects that use t
 workspace. This image will use 'godep get' to make sure it uses the commits you specified by freezing your
 dependencies.
 
+
+From within your app's source code directory: 
 ```bash
 
-docker run -v $(pwd):/go/src/app rutledgepaulv/godep-vendor-builder go build -v -o <name-for-the-executable>
+docker run --rm -v "$PWD":/go/src/app rutledgepaulv/godep-vendor-builder go build -v -o <name-for-the-executable>
 
 ```

@@ -7,4 +7,4 @@ WORKDIR /go/src/app
 ENV BINARY app
 ENV CG0_ENABLED 0
 ENV GOOS linux
-CMD [ "/bin/bash" , "-c", "godep get -v && go build -a -installsuffix cgo -o ${BINARY} "]
+CMD [ "/bin/bash" , "-c" , "godep get -v && go build --ldflags '-extldflags \"-static\"' -o ${BINARY}"]

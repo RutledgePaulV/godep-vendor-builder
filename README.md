@@ -47,7 +47,7 @@ docker run -v $PWD:/go/src/app -e BINARY=app rutledgepaulv/godep-vendor-builder
 
 
 Package your binary in a docker container for transport:
-```bash
+```dockerfile
 
 FROM scratch
 MAINTAINER Paul Rutledge <paul.v.rutledge@gmail.com>

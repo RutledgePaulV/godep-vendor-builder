@@ -3,7 +3,7 @@
 
 ### Godep Vendor Builder
 
-A variant on the publicly available golang image that lets you build go binaries for placement in a minimal
+A variant on the publicly available golang image that lets you build statically linked go binaries for placement in a minimal
 docker image (like what you get when inheriting scratch). This variant is to support builds that rely on the
 experimental vendor dependency management in conjunction with godep for managing particular commits of each
 dependency.

@@ -44,3 +44,14 @@ Build your binary:
 docker run -v $PWD:/go/src/app -e BINARY=app rutledgepaulv/godep-vendor-builder
 
 ```
+
+
+Package your binary in a docker container for transport:
+```bash
+
+FROM scratch
+MAINTAINER Paul Rutledge <paul.v.rutledge@gmail.com>
+COPY app /app
+ENTRYPOINT [ "/app" ]
+
+```

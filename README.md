@@ -15,30 +15,11 @@ dependency.
 ### Usage
 
 When you've got your project together and compiling okay based on your local packages, then use godep
-to freeze your dependencies at their current state:
+to freeze your dependencies at their current state and then use this image to build a static binary. It
+will fetch all the packages at the commit specified by your godep file and then compile.
 
 
-```bash
-
-go get godep
-sudo ln -s $GOPATH/bin/godep /usr/local/bin/godep
-export GO15VENDOREXPERIMENT=1
-
-cd $GOPATH/path/to/your/app
-godep save
-
-```
-
-
-That should produce a directory in your project called Godeps that contains a json file which details
-the specific commit of each dependency your project is currently using based on what's in your workspace.
-Now if you run ```godep get``` should also see a 'vendor' directory. These are the project-specific copy
-of the dependencies that you can use without affecting other projects that use those dependencies from your
-workspace. This image will use 'godep get' to make sure it uses the commits you specified by freezing your
-dependencies.
-
-
-Build your binary:
+Build your binary from your project's root directory:
 ```bash
 
 docker run -v $PWD:/go/src/app -e BINARY=app rutledgepaulv/godep-vendor-builder

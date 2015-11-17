@@ -46,7 +46,7 @@ docker run -v $PWD:/go/src/app -e BINARY=app rutledgepaulv/godep-vendor-builder
 ```
 
 
-Package your binary in a docker container for transport:
+Define a next-to-nothing docker container for transport:
 ```dockerfile
 
 FROM scratch
@@ -54,4 +54,10 @@ MAINTAINER Paul Rutledge <paul.v.rutledge@gmail.com>
 COPY app /app
 ENTRYPOINT [ "/app" ]
 
+```
+
+Build your container with only the binary and push it out for consumption
+```
+docker build -t rutledgepaulv/app .
+docker push rutledgepaulv/app
 ```
